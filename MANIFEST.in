@@ -1,0 +1,4 @@
+# Source distribution files
+include LICENSE
+include README.rst
+include setup.py

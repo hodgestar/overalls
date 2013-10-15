@@ -1,2 +1,4 @@
 /ve/
+/.cache/
+/.coverage
 *.pyc

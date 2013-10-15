@@ -43,6 +43,16 @@ class Collector(object):
         raise NotImplementedError("Collectors should implement .results.")
 
 
+class StaticCollector(Collector):
+    """Collector that returns a static set of results."""
+
+    def __init__(self, results):
+        self._results = results
+
+    def results(self):
+        return self._results
+
+
 class CollectorSet(Collector):
     """Collector that combines results from a set of other collectors."""
 

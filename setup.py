@@ -23,6 +23,11 @@ setup(
     requires=[
         'requests',
     ],
+    build_requires=[
+        'pytest',
+        'pytest-cov',
+        'pytest-pep8',
+    ],
     classifiers=[
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',

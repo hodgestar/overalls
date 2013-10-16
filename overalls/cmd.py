@@ -2,6 +2,7 @@
 
 from argparse import ArgumentParser
 
+from overalls import __version__
 from overalls.core import CollectorSet
 from overalls.collectors.python import PythonCoverageCollector
 from overalls.collectors.lcov import LcovCollector
@@ -14,6 +15,7 @@ class OverallsUploader(object):
 
     def create_parser(self):
         parser = ArgumentParser(
+            version=__version__,
             description="Upload coverage results to coveralls.io",
         )
         parser.add_argument("--py", action="store_true")
@@ -24,7 +26,7 @@ class OverallsUploader(object):
         collectors = []
         if args.py:
             collectors.append(PythonCoverageCollector())
-        for lcov_file in args.lcov:
+        for lcov_file in (args.lcov or ()):
             collectors.append(LcovCollector(open(lcov_file)))
         return CollectorSet(collectors)
 

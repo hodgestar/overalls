@@ -27,6 +27,11 @@ setup(
     author=AUTHOR,
     author_email=AUTHOR_EMAIL,
     packages=find_packages(),
+    package_data={
+        'overalls': [
+            '*/tests/*.lcov',
+        ],
+    },
     scripts=[
         'scripts/overalls',
     ],

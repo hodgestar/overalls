@@ -27,6 +27,7 @@ setup(
         'pytest',
         'pytest-cov',
         'pytest-pep8',
+        'mock',
     ],
     classifiers=[
         'Development Status :: 4 - Beta',

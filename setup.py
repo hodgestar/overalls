@@ -24,6 +24,7 @@ setup(
         'requests',
     ],
     build_requires=[
+        'pep8',
         'pytest',
         'pytest-cov',
         'pytest-pep8',

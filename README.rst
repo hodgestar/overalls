@@ -9,6 +9,8 @@ Overalls
 .. |overalls-cover| image:: https://coveralls.io/repos/hodgestar/overalls/badge.png?branch=master
 .. _overalls-cover: https://coveralls.io/r/hodgestar/overalls
 
+Available on `PyPi <https://pypi.python.org/pypi/overalls>`_.
+
 The `coveralls.io <http://coveralls.io>`_ coverage service is awesome
 but all the coverage results need to be uploaded at once. Sometimes
 one has multiple sources of coverage (e.g. tests for code in different

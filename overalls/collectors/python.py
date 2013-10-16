@@ -28,12 +28,18 @@ class PythonCoverageCollector(Collector):
         rel_filename = os.path.relpath(cu.filename, self._base_dir)
         with open(cu.filename) as f:
             source = f.readlines()
+
         coverage_lines = [None] * len(source)
+        missing_lines = set(analysis.missing)
+        executable_lines = set(analysis.statements)
+
         for lineno, line in enumerate(source):
             offset_lineno = lineno + 1
-            if (offset_lineno in analysis.statements and
-                    offset_lineno not in analysis.missing):
-                coverage_lines[lineno] = 1
+            if offset_lineno in executable_lines:
+                if offset_lineno in missing_lines:
+                    coverage_lines[lineno] = 0
+                else:
+                    coverage_lines[lineno] = 1
         return FileCoverage(
             filename=rel_filename, source=''.join(source),
             coverage=coverage_lines)

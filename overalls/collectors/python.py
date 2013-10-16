@@ -40,9 +40,12 @@ class PythonCoverageCollector(Collector):
 
     def results_for_reporter(self, reporter):
         results = CoverageResults()
-        for cu in self.code_units:
-            analysis = reporter._analyze(cu)
+        files = [cu.filename for cu in reporter.code_units]
+
+        def cb(cu, analysis):
             results.append(self.coverage_for_code_unit(cu, analysis))
+
+        reporter.report_files(cb, files)
         return results
 
     def results(self):
@@ -51,4 +54,4 @@ class PythonCoverageCollector(Collector):
         cov.load()
         reporter = Reporter(cov, cov.config)
         reporter.find_code_units(None)
-        return self._results_for_reporter(reporter)
+        return self.results_for_reporter(reporter)

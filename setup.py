@@ -13,7 +13,7 @@ def parse_requirements(filename):
 
 PROJECT = 'overalls'
 URL = 'https://github.com/hodgestar/overalls'
-VERSION = '0.1'
+VERSION = '0.2'
 AUTHOR = 'Simon Cross'
 AUTHOR_EMAIL = 'hodgestar@gmail.com'
 DESC = "Coveralls coverage uploader."

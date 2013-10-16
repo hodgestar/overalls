@@ -66,10 +66,11 @@ class CoverallsIoUploader(Uploader):
     def upload(self, results):
         source_files = [self.result_to_json(r) for r in results.files]
         json_data = {
-            "repo_token": self._repo_token,
             "service_job_id": self._service_job_id,
             "service_name": self._service_name,
             "source_files": source_files,
         }
+        if self._repo_token:
+            json_data["repo_token"] = self._repo_token
         json_file = StringIO.StringIO(json.dumps(json_data))
         self.post_to_api(json_file)

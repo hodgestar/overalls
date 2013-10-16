@@ -1,7 +1,7 @@
 Overalls
 ========
 
-|overalls-ci|_ [overalls-cover|_
+|overalls-ci|_ |overalls-cover|_
 
 .. |overalls-ci| image:: https://travis-ci.org/hodgestar/overalls.png?branch=master
 .. _overalls-ci: https://travis-ci.org/hodgestar/overalls

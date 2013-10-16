@@ -5,4 +5,5 @@ install:
   - pip install -e .
   - pip install -r requirements-dev.pip
 script:
+  - py.test --version
   - py.test -v --pep8 --cov overalls overalls

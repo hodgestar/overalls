@@ -20,6 +20,7 @@ class OverallsUploader(object):
         )
         parser.add_argument("--py", action="store_true")
         parser.add_argument("--lcov", action="append")
+        parser.add_argument("--debug", action="store_true")
         return parser
 
     def create_collector(self, args):
@@ -31,7 +32,7 @@ class OverallsUploader(object):
         return CollectorSet(collectors)
 
     def create_uploader(self, args):
-        return CoverallsIoUploader()
+        return CoverallsIoUploader(debug=args.debug)
 
     def run(self):
         args = self.parser.parse_args()

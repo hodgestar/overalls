@@ -5,10 +5,14 @@
 import os
 import json
 import StringIO
+import logging
 
 import requests
 
 from overalls.core import Uploader
+
+
+log = logging.getLogger(__name__)
 
 
 class CoverallsIoUploader(Uploader):
@@ -17,7 +21,10 @@ class CoverallsIoUploader(Uploader):
     DEFAULT_SERVICE_NAME = "travis-ci"
 
     def __init__(self, api_url=None, repo_token=None,
-                 service_job_id=None, service_name=None):
+                 service_job_id=None, service_name=None,
+                 debug=False):
+        self._debug = debug
+
         if api_url is None:
             api_url = self.DEFAULT_API_URL
         self._api_url = api_url
@@ -42,12 +49,15 @@ class CoverallsIoUploader(Uploader):
 
     def result_to_json(self, r):
         return {
-            "name": r.name,
+            "name": r.filename,
             "source": r.source,
             "coverage": r.coverage,
         }
 
     def post_to_api(self, json_file):
+        if self._debug:
+            log.info("Uploading to %s" % (self._api_url,))
+            log.info("Uploading data: %s" % json_file.getvalue())
         requests.post(self._api_url, files={'json_file': json_file})
 
     def upload(self, results):

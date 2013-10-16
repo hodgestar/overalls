@@ -4,17 +4,7 @@ from overalls.core import (
     FileCoverage, CoverageResults, Collector, StaticCollector, CollectorSet,
     Uploader)
 
-
-def mk_file_coverage(filename="filename", source="sour\nce",
-                     coverage=()):
-    return FileCoverage(filename, source, coverage)
-
-
-def mk_coverage_results(results=1):
-    c = CoverageResults()
-    for i in range(results):
-        c.append(mk_file_coverage())
-    return c
+from overalls.tests.utils import mk_file_coverage, mk_coverage_results
 
 
 class TestFileCoverage(TestCase):

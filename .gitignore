@@ -1,4 +1,6 @@
 /ve/
 /.cache/
+/dist/
+/*.egg-info/
 /.coverage
 *.pyc

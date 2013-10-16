@@ -13,10 +13,6 @@ from overalls.tests.utils import mk_coverage_results
 
 
 class TestOverallsUploader(TestCase):
-    def assert_types(self, objs, types):
-        self.assertTrue(all(isinstance(o, t) for o, t in zip(objs, types)))
-        self.assertEqual(len(objs), len(types))
-
     def test_create(self):
         u = OverallsUploader()
         self.assertTrue(isinstance(u.parser, ArgumentParser))

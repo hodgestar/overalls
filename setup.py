@@ -29,7 +29,6 @@ setup(
         'scripts/overalls',
     ],
     requires=parse_requirements("requirements.pip"),
-    build_requires=parse_requirements("requirements-dev.pip"),
     classifiers=[
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',

@@ -12,6 +12,7 @@ def parse_requirements(filename):
 
 
 PROJECT = 'overalls'
+URL = 'https://github.com/hodgestar/overalls'
 VERSION = '0.1'
 AUTHOR = 'Simon Cross'
 AUTHOR_EMAIL = 'hodgestar@gmail.com'
@@ -19,6 +20,7 @@ DESC = "Coveralls coverage uploader."
 
 setup(
     name=PROJECT,
+    url=URL,
     version=VERSION,
     description=DESC,
     long_description=open('README.rst').read(),

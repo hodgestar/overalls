@@ -1,10 +1,13 @@
 Overalls
 ========
 
-|overalls-ci|_
+|overalls-ci|_ [overalls-cover|_
 
 .. |overalls-ci| image:: https://travis-ci.org/hodgestar/overalls.png?branch=master
 .. _overalls-ci: https://travis-ci.org/hodgestar/overalls
+
+.. |overalls-cover| image:: https://coveralls.io/repos/hodgestar/overalls/badge.png?branch=master
+.. _overalls-cover: https://coveralls.io/r/hodgestar/overalls
 
 The `coveralls.io <http://coveralls.io>`_ coverage service is awesome
 but all the coverage results need to be uploaded at once. Sometimes

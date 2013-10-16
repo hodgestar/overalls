@@ -21,6 +21,14 @@ class FileCoverage(object):
         self.source = source
         self.coverage = coverage
 
+    def __repr__(self):
+        return "<%s filename=%r source=%r coverage=%r>" % (
+            self.__class__.__name__,
+            self.filename,
+            self.source[:30],
+            self.coverage[:30],
+        )
+
     def __eq__(self, other):
         if not isinstance(other, FileCoverage):
             return NotImplemented

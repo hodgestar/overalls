@@ -5,6 +5,10 @@
 from overalls.core import Collector, CoverageResults, FileCoverage
 
 
+class LcovParserError(Exception):
+    """Raised if there is an error parsing an lcov file."""
+
+
 class LcovParser(object):
     """Parser for gcov/lcov tracefile format.__init__
 
@@ -17,13 +21,23 @@ class LcovParser(object):
         self.results = CoverageResults()
         self.clear_record()
 
+    def set_record(self, source_file=None, coverage=None):
+        if source_file is not None:
+            self._source_file = source_file
+        if coverage is not None:
+            self._coverage = coverage
+
     def clear_record(self):
         self._source_file = None
         self._coverage = []
 
     def store_record(self):
-        with open(self._source_file) as source_file:
-            source = source_file.read()
+        try:
+            with open(self._source_file) as source_file:
+                source = source_file.read()
+        except (TypeError, IOError):
+            raise LcovParserError("Failed to read source file %r"
+                                  % (self._source_file,))
         num_lines = len(source.splitlines())
         cover_dict = dict(self._coverage)
         coverage = [cover_dict.get(i) for i in range(1, num_lines + 1)]
@@ -34,6 +48,7 @@ class LcovParser(object):
         ))
 
     def feed(self, line):
+        line = line.strip()
         if line == self.END_OF_RECORD:
             self.store_record()
             self.clear_record()

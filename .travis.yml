@@ -8,4 +8,4 @@ install:
 script:
   - py.test -v --pep8 --cov overalls overalls
 after_success:
-  - overalls --py --debug
+  - overalls --py

@@ -58,7 +58,10 @@ class CoverallsIoUploader(Uploader):
         if self._debug:
             log.info("Uploading to %s" % (self._api_url,))
             log.info("Uploading data: %s" % json_file.getvalue())
-        requests.post(self._api_url, files={'json_file': json_file})
+        response = requests.post(self._api_url, files={'json_file': json_file})
+        if self._debug:
+            log.info("Coveralls.io reply [%s]: %s"
+                     % (response.status_code, response.content))
 
     def upload(self, results):
         source_files = [self.result_to_json(r) for r in results.files]

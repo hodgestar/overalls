@@ -59,7 +59,8 @@ class TestOverallsUploader(TestCase):
         uploader = u.create_uploader(u.parser.parse_args([]))
         self.assertTrue(isinstance(uploader, CoverallsIoUploader))
 
-    def test_run(self):
+    @patch('overalls.cmd.logging.basicConfig')
+    def test_run(self, log_mock):
         u = OverallsUploader()
         args = u.parser.parse_args([])
         collector = StaticCollector(mk_coverage_results())
@@ -73,3 +74,4 @@ class TestOverallsUploader(TestCase):
         u.run()
 
         self.assertEqual(upload_calls, [collector.results()])
+        log_mock.assert_not_called()

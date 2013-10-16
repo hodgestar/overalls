@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 
+import logging
+import sys
+
 from argparse import ArgumentParser
 
 from overalls import __version__
@@ -36,6 +39,8 @@ class OverallsUploader(object):
 
     def run(self):
         args = self.parser.parse_args()
+        if args.debug:
+            logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
         collector = self.create_collector(args)
         results = collector.results()
         uploader = self.create_uploader(args)

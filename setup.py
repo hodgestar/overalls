@@ -35,7 +35,7 @@ setup(
     scripts=[
         'scripts/overalls',
     ],
-    requires=parse_requirements("requirements.pip"),
+    install_requires=parse_requirements("requirements.pip"),
     classifiers=[
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',

@@ -14,6 +14,20 @@ class TestFileCoverage(TestCase):
         self.assertEqual(f.source, "sour\nce")
         self.assertEqual(f.coverage, [])
 
+    def test_eq(self):
+        self.assertEqual(FileCoverage("filename", "sour\nce", []),
+                         FileCoverage("filename", "sour\nce", []))
+        self.assertNotEqual(FileCoverage("filename", "sour\nce", []),
+                            FileCoverage("other", "sour\nce", []))
+        self.assertNotEqual(FileCoverage("filename", "sour\nce", []),
+                            FileCoverage("filename", "other", []))
+        self.assertNotEqual(FileCoverage("filename", "sour\nce", []),
+                            FileCoverage("filename", "sour\nce", [1]))
+
+    def test_not_eq_other_type(self):
+        f = FileCoverage("filename", "sour\nce", [])
+        self.assertNotEqual(f, 2)
+
 
 class TestCoverageResults(TestCase):
     def test_create(self):

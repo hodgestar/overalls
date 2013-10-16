@@ -21,6 +21,13 @@ class FileCoverage(object):
         self.source = source
         self.coverage = coverage
 
+    def __eq__(self, other):
+        if not isinstance(other, FileCoverage):
+            return NotImplemented
+        return all((self.filename == other.filename,
+                    self.source == other.source,
+                    self.coverage == other.coverage))
+
 
 class CoverageResults(object):
     """Coverage results."""

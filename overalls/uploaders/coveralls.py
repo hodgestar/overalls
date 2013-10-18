@@ -19,9 +19,11 @@ class CoverallsIoUploader(Uploader):
 
     DEFAULT_API_URL = "https://coveralls.io/api/v1/jobs"
     DEFAULT_SERVICE_NAME = "travis-ci"
+    DEFAULT_JOB_ID = os.environ.get('TRAVIS_JOB_ID', '')
+    DEFAULT_REPO_TOKEN = os.environ.get('COVERALLS_REPO_TOKEN', None)
 
-    def __init__(self, api_url=None, repo_token=None,
-                 service_job_id=None, service_name=None,
+    def __init__(self, api_url=None, service_name=None,
+                 service_job_id=None, repo_token=None,
                  debug=False):
         self._debug = debug
 
@@ -29,23 +31,17 @@ class CoverallsIoUploader(Uploader):
             api_url = self.DEFAULT_API_URL
         self._api_url = api_url
 
-        if repo_token is None:
-            repo_token = self.default_repo_token()
-        self._repo_token = repo_token
-
-        if service_job_id is None:
-            service_job_id = self.default_job_id()
-        self._service_job_id = service_job_id
-
         if service_name is None:
             service_name = self.DEFAULT_SERVICE_NAME
         self._service_name = service_name
 
-    def default_job_id(self):
-        return os.environ.get('TRAVIS_JOB_ID', '')
+        if service_job_id is None:
+            service_job_id = self.DEFAULT_JOB_ID
+        self._service_job_id = service_job_id
 
-    def default_repo_token(self):
-        return os.environ.get('COVERALLS_REPO_TOKEN', '')
+        if repo_token is None:
+            repo_token = self.DEFAULT_REPO_TOKEN
+        self._repo_token = repo_token
 
     def result_to_json(self, r):
         return {

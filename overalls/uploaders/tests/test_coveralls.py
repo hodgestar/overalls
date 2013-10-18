@@ -55,8 +55,8 @@ class TestCoverallsIoUploader(TestCase):
         [json_file], kw = mock_post.call_args
         self.assertEqual(kw, {})
         self.assertEqual(json.loads(json_file.getvalue()), {
-            "service_name": "travis-ci",
-            "service_job_id": "",
+            "service_name": CoverallsIoUploader.DEFAULT_SERVICE_NAME,
+            "service_job_id": CoverallsIoUploader.DEFAULT_JOB_ID,
             "source_files": [
                 {"coverage": [], "name": "filename", "source": "sour\nce"},
             ],

@@ -2,6 +2,8 @@
 
 """An lcov collector."""
 
+import os
+
 from overalls.core import Collector, CoverageResults, FileCoverage
 
 
@@ -60,7 +62,7 @@ class LcovParser(object):
 
     def handle_sf(self, abs_path):
         """Handle a source filename."""
-        self._source_file = abs_path
+        self._source_file = os.path.normpath(abs_path)
 
     def handle_da(self, rest):
         """Handle counts for lines that resulted in executable code."""

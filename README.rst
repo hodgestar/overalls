@@ -1,13 +1,16 @@
 Overalls
 ========
 
-|overalls-ci|_ |overalls-cover|_
+|overalls-ci|_ |overalls-cover|_ |overalls-pypi|_
 
 .. |overalls-ci| image:: https://travis-ci.org/hodgestar/overalls.png?branch=master
 .. _overalls-ci: https://travis-ci.org/hodgestar/overalls
 
 .. |overalls-cover| image:: https://coveralls.io/repos/hodgestar/overalls/badge.png?branch=master
 .. _overalls-cover: https://coveralls.io/r/hodgestar/overalls
+
+.. |overalls-pypi| image:: https://badge.fury.io/py/overalls.png
+.. _overalls-pypi: http://badge.fury.io/py/overalls
 
 Available on `PyPi <https://pypi.python.org/pypi/overalls>`_.
 
